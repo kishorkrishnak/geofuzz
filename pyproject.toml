@@ -1,0 +1,51 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "geofuzz"
+version = "0.1.0"
+description = "Pathological geometry generation for testing GIS pipelines"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Kishor Krishna", email = "76237264+kishorkrishnak@users.noreply.github.com" }]
+keywords = ["gis", "geospatial", "fuzzing", "testing", "geojson", "property-based-testing"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: GIS",
+    "Topic :: Software Development :: Testing",
+]
+dependencies = ["click>=8.0"]
+
+[project.optional-dependencies]
+hypothesis = ["hypothesis>=6.0"]
+dev = ["pytest>=7.0", "hypothesis>=6.0", "ruff>=0.6"]
+
+[project.urls]
+Homepage = "https://github.com/kishorkrishnak/geofuzz"
+Issues = "https://github.com/kishorkrishnak/geofuzz/issues"
+
+[project.scripts]
+geofuzz = "geofuzz.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/geofuzz"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["B017"]

@@ -1,0 +1,21 @@
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -Infinity,
+      7.076676047
+    ]
+  },
+  "properties": {
+    "geofuzz": {
+      "seed": 3,
+      "geometry": "point",
+      "vertices": 8,
+      "mutations": [
+        "extreme_coordinates",
+        "nan_coordinates"
+      ]
+    }
+  }
+}
